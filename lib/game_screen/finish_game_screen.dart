@@ -4,20 +4,21 @@ import '../pregame_screen/create_room_screen.dart';
 
 class FinishGameScreen extends StatelessWidget {
 
-  const FinishGameScreen({
-    Key? key,
-  }) : super(key: key);
+  const FinishGameScreen({super.key,});
 
   @override
+
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
   backgroundColor: const Color.fromARGB(255, 218, 255, 228),
   leading: IconButton(
     icon: Image.asset(
       'assets/image/Back.png',
-      width: 50,
-      height: 50,
+      width: screenWidth * 0.026, // Lebar gambar
+      height: screenHeight * 0.047, // Tinggi gambar
     ),
     onPressed: () {
       showDialog(
@@ -34,20 +35,21 @@ class FinishGameScreen extends StatelessWidget {
           color: const Color.fromARGB(255, 218, 255, 228), // Warna latar
           borderRadius: BorderRadius.circular(20), // Radius tepi
         ),
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(screenWidth * 0.0083),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: screenHeight * 0.018),
+            Text(
               'Apa anda ingin \n membatalkan \n permainan?',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 50,
+              style: TextStyle(
+                fontSize: screenWidth * 0.026,
               fontWeight: FontWeight.bold,
             color: Color.fromARGB(255, 11, 73, 128)
               ),
             ),
-            const SizedBox(height: 200),
+            SizedBox(height: screenHeight * 0.018),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -57,8 +59,8 @@ class FinishGameScreen extends StatelessWidget {
                   },
                   child: Image.asset(
                     'assets/image/tidak_button.png',
-                    width: 250,
-                    height: 150,
+                    width: screenWidth * 0.130,
+                    height: screenHeight * 0.141,
                   ),
                 ),
                 GestureDetector(
@@ -72,8 +74,8 @@ class FinishGameScreen extends StatelessWidget {
                   },
                   child: Image.asset(
                     'assets/image/iya_button.png',
-                    width: 250,
-                    height: 150,
+                    width: screenWidth * 0.130,
+                    height: screenHeight * 0.141,
                   ),
                 ),
               ],
@@ -94,9 +96,9 @@ class FinishGameScreen extends StatelessWidget {
           children: [
             // Kotak informasi
             Container(
-              width: 800,
-              height: 500,
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              width: screenWidth * 0.416,
+              height: screenHeight * 0.473,
+              padding: EdgeInsets.symmetric(vertical: screenHeight * 0.018),
               decoration: BoxDecoration(
                 color: const Color(0xFFA4F4C3), // Warna kotak
                 borderRadius: BorderRadius.circular(16),
@@ -110,33 +112,33 @@ class FinishGameScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const Text(
+                   Text(
                     'Total Stage',
                     style: TextStyle(
-                      fontSize: 40,
+                      fontSize: screenWidth * 0.0208,
                       color: Color(0xFF0B4980), // Warna teks
                     ),
                   ),
                   Text(
                     '10 STAGE',
-                    style: const TextStyle(
-                      fontSize: 80,
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.0416,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF0B4980), // Warna teks
                     ),
                   ),
-                  const SizedBox(height: 100),
-                  const Text(
+                   SizedBox(height: screenHeight * 0.094),
+                   Text(
                     'Skor',
                     style: TextStyle(
-                      fontSize: 40,
+                      fontSize: screenWidth * 0.0208,
                       color: Color(0xFF0B4980), // Warna teks
                     ),
                   ),
                   Text(
                     '10',
-                    style: const TextStyle(
-                      fontSize: 80,
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.0416,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF0B4980), // Warna teks
                     ),
@@ -144,7 +146,7 @@ class FinishGameScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 30),
+             SizedBox(height: screenHeight * 0.028),
             InkWell(
                   onTap: () {
               Navigator.pushReplacement(
@@ -154,8 +156,8 @@ class FinishGameScreen extends StatelessWidget {
               ),
             );},
                   child: Container(
-                  width: 500, // Atur lebar sesuai kebutuhan
-                  height: 150, // Atur tinggi sesuai kebutuhan
+                  width: screenWidth * 0.260, // Atur lebar sesuai kebutuhan
+                  height: screenHeight * 0.141, // Atur tinggi sesuai kebutuhan
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/image/play_button2.png'), // Gambar tombol Join

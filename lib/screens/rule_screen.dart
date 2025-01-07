@@ -7,23 +7,19 @@ void showRulesModal(BuildContext context) {
     backgroundColor: Colors.transparent,
     builder: (context) {
       // Menggunakan MediaQuery untuk mendapatkan tinggi layar
-      final double screenHeight = MediaQuery.of(context).size.height;
+      //final double screenHeight = MediaQuery.of(context).size.height;
+      final double screenWidth = MediaQuery.of(context).size.width;
 
       return Row(
         children: [
           Expanded(child: SizedBox()), // Placeholder untuk Row
           Expanded(
             child: Align(
-              alignment: Alignment.centerRight,
+              alignment: Alignment.center,
               child: Container(
-                height: screenHeight * 1, // Tinggi modal menjadi 70% dari layar
-                width: screenHeight * 5, // Lebar penuh
+                width: screenWidth * 0.7, // Lebar penuh dari layar
                 decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 218, 255, 228),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16.0), // Sudut melengkung atas kiri
-                    topRight: Radius.circular(16.0), // Sudut melengkung atas kanan
-                  ),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -62,13 +58,6 @@ void showRulesModal(BuildContext context) {
                           fontFamily: 'boldfont',
                           color: Color.fromARGB(255, 11, 73, 128),
                         ),
-                      ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context); // Menutup modal
-                        },
-                        child: const Text('Tutup'),
                       ),
                     ],
                   ),

@@ -6,20 +6,21 @@ import 'rule_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   // Variabel untuk mengatur jarak antar tombol
   final double buttonSpacing = 20.0;
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
   backgroundColor: const Color.fromARGB(255, 218, 255, 228),
   leading: IconButton(
     icon: Image.asset(
       'assets/image/Back.png', // Gambar khusus untuk tombol kembali
-      width: 50, // Lebar gambar
-      height: 50, // Tinggi gambar
+      width: screenWidth * 0.026, // Lebar gambar
+      height: screenHeight * 0.047, // Tinggi gambar
     ),
     onPressed: () {
       Navigator.pushReplacement(
@@ -34,8 +35,8 @@ class HomeScreen extends StatelessWidget {
     IconButton(
       icon: Image.asset(
         'assets/image/rule.png', // Gambar untuk tombol di pojok kanan
-        width: 50, // Lebar gambar
-        height: 50, // Tinggi gambar
+        width: screenWidth * 0.026, // Lebar gambar
+      height: screenHeight * 0.047, // Tinggi gambar
       ),
       onPressed: () {
         showRulesModal(context);
@@ -49,27 +50,27 @@ class HomeScreen extends StatelessWidget {
           color: Color.fromARGB(255, 218, 255, 228),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 24.0),
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.0026, vertical: screenHeight * 0.0227),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 250),
-              const Text(
+               SizedBox(height: screenHeight * 0.236),
+               Text(
                 "Username",
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: screenWidth * 0.012,
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 11, 73, 128),
                 ),
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: screenWidth * 0.0283),
               // Username Input Field
               Container(
-                width: 450, // Lebar kolom TextField dipendekkan
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                width: screenWidth * 0.234, // Lebar kolom TextField dipendekkan
+                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.0026),
                 decoration: BoxDecoration(
                   color: Color.fromARGB(255, 218, 255, 228),
-                  border: Border.all(color: Color.fromARGB(255, 11, 73, 128), width: 5),
+                  border: Border.all(color: Color.fromARGB(255, 11, 73, 128), width: screenWidth * 0.0026),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: TextField(
@@ -78,13 +79,13 @@ class HomeScreen extends StatelessWidget {
                     border: InputBorder.none,
                   ),
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Color.fromARGB(255, 11, 73, 128),
-                    fontSize: 18,
+                    fontSize: screenWidth * 0.0093,
                   ),
                 ),
               ),
-              const SizedBox(height: 100),
+              SizedBox(height: screenHeight * 0.094),
               // Row for Buttons
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -101,8 +102,8 @@ class HomeScreen extends StatelessWidget {
                         );
                     },
                     child: SizedBox(
-                      height: 200,
-                      width: 300,
+                      height: screenHeight * 0.189,
+                      width: screenWidth * 0.156,
                       child: Image.asset(
                         'assets/image/join_button.png', // Ikon untuk tombol Join Room
                         fit: BoxFit.cover,
@@ -110,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   // Jarak antara tombol (dapat diubah)
-                  SizedBox(width: 150),
+                  SizedBox(width: screenWidth * 0.078),
                   // Create Room Button
                   GestureDetector(
                     onTap: () {
@@ -122,8 +123,8 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                     child: SizedBox(
-                      height: 200,
-                      width: 300,
+                      height: screenHeight * 0.189,
+                      width: screenWidth * 0.156,
                       child: Image.asset(
                         'assets/image/create_button.png', // Ikon untuk tombol Create Room
                         fit: BoxFit.cover,

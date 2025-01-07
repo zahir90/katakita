@@ -17,14 +17,16 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 218, 255, 228),
         leading: IconButton(
           icon: Image.asset(
             'assets/image/Back.png', // Gambar khusus untuk tombol kembali
-            width: 50, // Lebar gambar
-            height: 50, // Tinggi gambar
+            width: screenWidth * 0.026,
+            height: screenHeight * 0.047,
           ),
           onPressed: () {
             Navigator.pushReplacement(
@@ -39,8 +41,8 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
           IconButton(
             icon: Image.asset(
               'assets/image/rule.png', // Gambar untuk tombol di pojok kanan
-              width: 50, // Lebar gambar
-              height: 50, // Tinggi gambar
+      width: screenWidth * 0.026, // Lebar gambar
+      height: screenHeight * 0.047, // Tinggi gambar
             ),
             onPressed: () {
               showRulesModal(context);
@@ -54,18 +56,18 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
             color: Color.fromARGB(255, 218, 255, 228),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 24.0),
+            padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.0026, vertical: screenHeight * 0.022),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 300),
+                SizedBox(height: screenHeight * 0.283),
                 // Username Input Field
                 Container(
-                  width: 500, // Atur lebar sesuai kebutuhan
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  width: screenWidth * 0.260, // Atur lebar sesuai kebutuhan
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.0026),
                   decoration: BoxDecoration(
                     color: Color.fromARGB(255, 218, 255, 228),
-                    border: Border.all(color: Color.fromARGB(255, 11, 73, 128), width: 5),
+                    border: Border.all(color: Color.fromARGB(255, 11, 73, 128), width: screenWidth * 0.0026),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: TextField(
@@ -74,14 +76,14 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
                       border: InputBorder.none,
                     ),
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Color.fromARGB(255, 11, 73, 128),
-                      fontSize: 18,
+                      fontSize: screenWidth * 0.0093,
                     ),
                   ),
                 ),
         
-                const SizedBox(height: 10),
+                 SizedBox(height: screenHeight * 0.0094),
                 InkWell(
                   onTap: () {
               Navigator.pushReplacement(
@@ -91,8 +93,8 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
               ),
             );},
                   child: Container(
-                  width: 500, // Atur lebar sesuai kebutuhan
-                  height: 150, // Atur tinggi sesuai kebutuhan
+                  width: screenWidth * 0.260, // Atur lebar sesuai kebutuhan
+                  height: screenHeight * 0.141, // Atur tinggi sesuai kebutuhan
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/image/join2.png'), // Gambar tombol Join

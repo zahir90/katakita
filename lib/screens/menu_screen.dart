@@ -12,6 +12,8 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -33,15 +35,15 @@ class _MenuScreenState extends State<MenuScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Column(
+                  Column(
                     children: [
                       Image(
                         image: AssetImage('assets/image/logo.png'),
-                        width: 300,
+                        width: screenWidth * 0.156,
                       ),
                     ],
                   ),
-                  const SizedBox(height: 70),
+                  SizedBox(height: screenHeight * 0.066),
                   InkWell(
                     onTap: () {
                       Navigator.pushReplacement(
@@ -53,11 +55,11 @@ class _MenuScreenState extends State<MenuScreen> {
                     },
                     child: Image.asset(
                       'assets/image/button.png', // Ganti dengan path tombol gambar
-                      width: 300, // Atur ukuran gambar tombol
-                      height: 100,
+                      width: screenWidth * 0.156, // Atur ukuran gambar tombol
+                      height: screenHeight * 0.094,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                   SizedBox(height: screenHeight * 0.018),
                 ],
               ),
             ),
@@ -66,15 +68,15 @@ class _MenuScreenState extends State<MenuScreen> {
             Align(
               alignment: Alignment.topRight,
               child: Padding(
-                padding: const EdgeInsets.all(16.0), // Jarak dari tepi
+                padding: EdgeInsets.all(screenWidth * 0.0083), // Jarak dari tepi
                 child: InkWell(
                   onTap: () {
                     showRulesModal(context);
                   },
                   child: Image.asset(
                     'assets/image/rule.png', // Ganti dengan path gambar tombol
-                    width: 50, // Ukuran tombol gambar
-                    height: 50,
+                    width: screenWidth * 0.026, // Ukuran tombol gambar
+                    height: screenHeight * 0.047,
                   ),
                 ),
               ),

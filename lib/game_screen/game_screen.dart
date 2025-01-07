@@ -136,14 +136,16 @@ bool areAllAnswersSame(Map<int, String> playerAnswers) {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
   backgroundColor: const Color.fromARGB(255, 218, 255, 228),
   leading: IconButton(
     icon: Image.asset(
       'assets/image/Back.png',
-      width: 50,
-      height: 50,
+      width: screenWidth * 0.026, // Lebar gambar
+      height: screenHeight * 0.047, // Tinggi gambar
     ),
     onPressed: () {
       showDialog(
@@ -160,20 +162,21 @@ bool areAllAnswersSame(Map<int, String> playerAnswers) {
           color: const Color.fromARGB(255, 218, 255, 228), // Warna latar
           borderRadius: BorderRadius.circular(20), // Radius tepi
         ),
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(screenWidth * 0.0083),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: screenHeight * 0.018),
+             Text(
               'Apa anda ingin \n membatalkan \n permainan?',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 50,
+              style: TextStyle(
+                fontSize: screenWidth * 0.026,
               fontWeight: FontWeight.bold,
             color: Color.fromARGB(255, 11, 73, 128)
               ),
             ),
-            const SizedBox(height: 200),
+            SizedBox(height: screenHeight * 0.018),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -183,8 +186,8 @@ bool areAllAnswersSame(Map<int, String> playerAnswers) {
                   },
                   child: Image.asset(
                     'assets/image/tidak_button.png',
-                    width: 250,
-                    height: 150,
+                    width: screenWidth * 0.130,
+                    height: screenHeight * 0.141,
                   ),
                 ),
                 GestureDetector(
@@ -200,8 +203,8 @@ bool areAllAnswersSame(Map<int, String> playerAnswers) {
                   },
                   child: Image.asset(
                     'assets/image/iya_button.png',
-                    width: 250,
-                    height: 150,
+                    width: screenWidth * 0.130,
+                    height: screenHeight * 0.141,
                   ),
                 ),
               ],
@@ -217,12 +220,12 @@ bool areAllAnswersSame(Map<int, String> playerAnswers) {
   ),
   actions: [
     Padding(
-      padding: const EdgeInsets.only(right: 16.0), // Jarak dari tepi kanan
+      padding: EdgeInsets.only(right: screenWidth * 0.0083), // Jarak dari tepi kanan
       child: Center(
         child: Text(
           'Stage 1/10', // Ubah teks sesuai kebutuhan
-          style: const TextStyle(
-            fontSize: 18,
+          style: TextStyle(
+            fontSize: screenWidth * 0.0093,
             fontWeight: FontWeight.bold,
             color: Color.fromARGB(255, 11, 73, 128),
           ),
@@ -248,12 +251,14 @@ bool areAllAnswersSame(Map<int, String> playerAnswers) {
   }
 
 Widget buildstage() {
+    final screenWidth = MediaQuery.of(context).size.width;
+    //final screenHeight = MediaQuery.of(context).size.height;
   return Align(
-    alignment: Alignment(0, -0.10), // Atur posisi vertikal countdown lebih ke atas
+    alignment: Alignment(0, -10), // Atur posisi vertikal countdown lebih ke atas
     child: Text(
       'STAGE 1/10',
-      style: const TextStyle(
-        fontSize: 48,
+      style:TextStyle(
+        fontSize: screenWidth * 0.025,
         fontWeight: FontWeight.bold,
         color: Color.fromARGB(255, 11, 73, 128),
       ),
@@ -263,46 +268,48 @@ Widget buildstage() {
 
 
   Widget buildInputWord() {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      const SizedBox(height: 24),
+       SizedBox(height: screenHeight * 0.022),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
+           Icon(
             Icons.timer, // Ikon jam
             color: Color.fromARGB(255, 11, 73, 128),
-            size: 30, // Ukuran ikon
+            size: screenWidth * 0.015, // Ukuran ikon
           ),
-          const SizedBox(width: 8), // Jarak antara ikon dan teks countdown
+           SizedBox(width: screenWidth * 0.0041), // Jarak antara ikon dan teks countdown
           Text(
             '$countdown',
-            style: const TextStyle(
-              fontSize: 24,
+            style: TextStyle(
+              fontSize: screenWidth * 0.0125,
               color: Color.fromARGB(255, 11, 73, 128),
             ),
           ),
         ],
       ),
-      const SizedBox(height: 200),
+      SizedBox(height: screenHeight * 0.189),
       Text(
         '$targetWord',
-        style: const TextStyle(
-          fontSize: 50,
+        style: TextStyle(
+          fontSize: screenWidth * 0.026,
           fontWeight: FontWeight.bold,
           color: Color.fromARGB(255, 11, 73, 128),
         ),
       ),
-      const SizedBox(height: 200),
+       SizedBox(height: screenHeight * 0.189),
       Container(
-        width: 450,
-        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+        width: screenWidth * 0.234,
+        padding:  EdgeInsets.symmetric(horizontal: screenWidth * 0.0026),
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 218, 255, 228),
           border: Border.all(
             color: const Color.fromARGB(255, 11, 73, 128),
-            width: 5,
+            width: screenWidth * 0.0026,
           ),
           borderRadius: BorderRadius.circular(8),
         ),
@@ -312,9 +319,9 @@ Widget buildstage() {
             border: InputBorder.none,
           ),
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: Color.fromARGB(255, 11, 73, 128),
-            fontSize: 18,
+            fontSize: screenWidth * 0.0093,
           ),
           onChanged: (value) {
             userInput = value; // Simpan input pengguna
@@ -327,6 +334,8 @@ Widget buildstage() {
 
 
 Widget buildCollectingAnswers() {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
   Map<int, String> playerAnswers = {
     1: userInput.toUpperCase(),
     2: 'SINAR',
@@ -363,16 +372,16 @@ Widget buildCollectingAnswers() {
     children: [
       Column(
         children: [
-          const SizedBox(height: 100),
+          SizedBox(height: screenHeight * 0.094),
           Text(
             '$targetWord',
-            style: const TextStyle(
-              fontSize: 50,
+            style: TextStyle(
+              fontSize: screenWidth * 0.026,
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 11, 73, 128),
             ),
           ),
-          const SizedBox(height: 150),
+          SizedBox(height: screenHeight * 0.0094),
           Column(
             children: [
               Row(
@@ -382,8 +391,9 @@ Widget buildCollectingAnswers() {
                   buildPlayerAnswerBox(2, playerAnswers[2]!, duplicateAnswers),
                 ],
               ),
-              const SizedBox(height: 150),
-              Row(
+              SizedBox              
+              (height: screenHeight * 0.0094),                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+              Row(    
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   buildPlayerAnswerBox(3, playerAnswers[3]!, duplicateAnswers),
@@ -412,21 +422,23 @@ Widget buildCollectingAnswers() {
 
 
 Widget buildPlayerAnswerBox(int playerNumber, String answer, Set<String> duplicateAnswers) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
   bool isDuplicate = duplicateAnswers.contains(answer);
 
   return Column(
     children: [
       Text(
         'Player $playerNumber',
-        style: const TextStyle(
-          fontSize: 18,
+        style: TextStyle(
+          fontSize: screenWidth * 0.0093,
           fontWeight: FontWeight.bold,
           color: Color.fromARGB(255, 11, 73, 128),
         ),
       ),
-      const SizedBox(height: 20),
+      SizedBox(height: screenHeight * 0.018),
       Container(
-        width: 300, // Tetapkan lebar tetap
+        width: screenWidth * 0.156, // Tetapkan lebar tetap
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: const Color.fromARGB(255, 255, 255, 255),
@@ -434,17 +446,17 @@ Widget buildPlayerAnswerBox(int playerNumber, String answer, Set<String> duplica
             color: isDuplicate
                 ? const Color.fromARGB(255, 54, 185, 45) // Warna merah untuk jawaban duplikatrgba(54, 185, 45, 1)
                 : const Color.fromARGB(255, 119, 134, 148), // Warna normal
-            width: 5,
+            width: screenWidth * 0.0026,
           ),
         ),
-        padding: const EdgeInsets.symmetric(
-          vertical: 25,
+        padding: EdgeInsets.symmetric(
+          vertical: screenHeight * 0.023,
         ),
         child: Center( // Teks berada di tengah
           child: Text(
             answer,
-            style: const TextStyle(
-              fontSize: 20,
+            style: TextStyle(
+              fontSize: screenWidth * 0.0104,
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 11, 73, 128),
             ),

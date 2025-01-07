@@ -1,3 +1,4 @@
+// ignore_for_file: unnecessary_import
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:katakita/game_screen/game_screen.dart';
@@ -9,6 +10,8 @@ class CreateRoomScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     final roomCode = "ABCD"; // Room code statis
     final List<String> players = [
       "PLAYER 1",
@@ -23,8 +26,8 @@ class CreateRoomScreen extends StatelessWidget {
         leading: IconButton(
           icon: Image.asset(
             'assets/image/Back.png',
-            width: 50,
-            height: 50,
+            width: screenWidth * 0.026,
+            height: screenHeight * 0.047,
           ),
           onPressed: () {
             showDialog(
@@ -41,20 +44,21 @@ class CreateRoomScreen extends StatelessWidget {
           color: const Color.fromARGB(255, 218, 255, 228), // Warna latar
           borderRadius: BorderRadius.circular(20), // Radius tepi
         ),
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(screenWidth * 0.0083),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: screenHeight * 0.018),
+            Text(
               'Apa anda ingin \n membubarkan \n ruangan?',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 50,
+              style: TextStyle(
+                fontSize: screenWidth * 0.026,
               fontWeight: FontWeight.bold,
             color: Color.fromARGB(255, 11, 73, 128)
               ),
             ),
-            const SizedBox(height: 200),
+            SizedBox(height: screenHeight * 0.018),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -64,8 +68,8 @@ class CreateRoomScreen extends StatelessWidget {
                   },
                   child: Image.asset(
                     'assets/image/tidak_button.png',
-                    width: 250,
-                    height: 150,
+                    width: screenWidth * 0.130,
+                    height: screenHeight * 0.141,
                   ),
                 ),
                 GestureDetector(
@@ -79,8 +83,8 @@ class CreateRoomScreen extends StatelessWidget {
                   },
                   child: Image.asset(
                     'assets/image/iya_button.png',
-                    width: 250,
-                    height: 150,
+                    width: screenWidth * 0.130,
+                    height: screenHeight * 0.141,
                   ),
                 ),
               ],
@@ -98,8 +102,8 @@ class CreateRoomScreen extends StatelessWidget {
           IconButton(
             icon: Image.asset(
               'assets/image/rule.png',
-              width: 50,
-              height: 50,
+      width: screenWidth * 0.026, // Lebar gambar
+      height: screenHeight * 0.047, // Tinggi gambar
             ),
             onPressed: () {
               showRulesModal(context);
@@ -113,33 +117,33 @@ class CreateRoomScreen extends StatelessWidget {
             color: Color.fromARGB(255, 218, 255, 228),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(screenWidth * 0.0083),
             child: Column(
               children: [
                 // Room Code Section
                 Container(
-                  padding: const EdgeInsets.all(16),
-                  width: 500,
+        padding: EdgeInsets.all(screenWidth * 0.0083),
+                  width: screenWidth * 0.260,
                   decoration: BoxDecoration(
                     color: const Color(0xFF62D660), // Warna hijau
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'Kode Ruangan :',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: screenWidth * 0.0093,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 11, 73, 128),
                           fontFamily: 'boldfont'
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: screenHeight * 0.0075),
                       Text(
                         roomCode,
-                        style: const TextStyle(
-                          fontSize: 28,
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.014,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
@@ -152,15 +156,15 @@ class CreateRoomScreen extends StatelessWidget {
   decoration: BoxDecoration(
     color: Color.fromARGB(255, 71, 135, 224), // Warna biru
   ),
-  width: 500, // Lebar tetap untuk kotak
-  height: 600,
+  width: screenWidth * 0.260, // Lebar tetap untuk kotak
+  height: screenHeight * 0.567,
   child: Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       for (int i = 0; i < players.length; i++) ...[
         SizedBox(
-          width: 500, // Memastikan garis selebar kotak
-          height: 5, // Ketebalan garis
+          width: screenWidth * 0.260, // Memastikan garis selebar kotak
+          height: screenHeight * 0.0047, // Ketebalan garis
           child: DecoratedBox(
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 11, 73, 128),
@@ -170,11 +174,11 @@ class CreateRoomScreen extends StatelessWidget {
         ),
         Container(
           alignment: Alignment.center,
-          padding: const EdgeInsets.symmetric(vertical: 57), // Padding vertikal untuk memberi jarak
+          padding: EdgeInsets.symmetric(vertical: screenHeight * 0.0539), // Padding vertikal untuk memberi jarak
           child: Text(
             players[i],
-            style: const TextStyle(
-              fontSize: 20,
+            style: TextStyle(
+              fontSize: screenWidth * 0.0104,
               fontFamily: 'boldfont',
               color: Colors.white,
             ),
@@ -187,7 +191,7 @@ class CreateRoomScreen extends StatelessWidget {
 ),
 
 // Tambahkan teks di bawah kotak pemain
-const SizedBox(height: 50), // Spasi antara kotak pemain dan teks
+SizedBox(height: screenHeight * 0.0473), // Spasi antara kotak pemain dan teks
 InkWell(
                   onTap: () {
               Navigator.pushReplacement(
@@ -197,8 +201,8 @@ InkWell(
               ),
             );},
                   child: Container(
-                  width: 500, // Atur lebar sesuai kebutuhan
-                  height: 150, // Atur tinggi sesuai kebutuhan
+                  width: screenWidth * 0.260, // Atur lebar sesuai kebutuhan
+                  height: screenHeight * 0.141, // Atur tinggi sesuai kebutuhan
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/image/play_button2.png'), // Gambar tombol Join
